@@ -24,3 +24,17 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+
+    cantidad_clave = {}
+
+    with open('files/input/data.csv', 'r') as file:
+        for line in file:
+            for pair in line.split('\t')[4].split(','):
+                key = pair.split(':')[0]
+
+                if key in cantidad_clave:
+                    cantidad_clave[key] += 1
+                else:
+                    cantidad_clave[key] = 1
+
+    return cantidad_clave

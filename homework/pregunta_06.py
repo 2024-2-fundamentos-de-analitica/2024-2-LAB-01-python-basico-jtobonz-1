@@ -43,7 +43,7 @@ def pregunta_06():
                 else:
                     max_min[key] = (value, value)
 
-    registro = [(key, maximo, minimo) for key, (maximo, minimo) in max_min.items()]
+    registro = [(key, minimo, maximo) for key, (maximo, minimo) in max_min.items()]
     registro.sort()
 
     return registro

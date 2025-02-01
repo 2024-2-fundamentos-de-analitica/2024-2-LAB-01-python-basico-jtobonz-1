@@ -26,3 +26,19 @@ def pregunta_04():
      ('12', 3)]
 
     """
+
+    cantidad_mes = {}
+
+    with open('files/input/data.csv') as file:
+        for line in file:
+            mes = line.split('\t')[2].split('-')[1]
+
+            if mes in cantidad_mes:
+                cantidad_mes[mes] += 1
+            else:
+                cantidad_mes[mes] = 1
+
+    registro = [(mes, cantidad) for mes, cantidad in cantidad_mes.items()]
+    registro.sort()
+
+    return registro

@@ -16,3 +16,21 @@ def pregunta_11():
 
 
     """
+
+    cantidad_letra = {}
+
+    with open('files/input/data.csv', 'r') as file:
+        for line in file:
+            filter = line.split('\t')[3]
+            letra = filter.split(',')
+            valor = int(line.split('\t')[1])
+
+            for ele in letra:
+                if ele in cantidad_letra:
+                    cantidad_letra[ele] += valor
+                else:
+                    cantidad_letra[ele] = valor
+    sorted_items = sorted(cantidad_letra.items(), key=lambda x: x[0])
+    result = dict(sorted_items)
+
+    return result

@@ -27,3 +27,20 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+
+    registro = {}
+
+    with open('files/input/data.csv', 'r') as file:
+        for line in file:
+            valor = int(line.split('\t')[1])
+            letra = line.split('\t')[0]
+
+            if valor in registro:
+                registro[valor].add(letra)
+            else:
+                registro[valor] = {letra}
+
+    resultado = [(valor, sorted(letras)) for valor, letras in registro.items()]
+    resultado.sort(key=lambda x: x[0])  # Ordenamos por el valor numérico
+
+    return resultado

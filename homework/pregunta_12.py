@@ -15,3 +15,23 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+
+    cantidad_letra = {}
+
+    with open('files/input/data.csv', 'r') as file:
+        for line in file:
+            letra = line.split('\t')[0]
+            valores = (line.split('\t')[4]).split(',')
+
+            for ele in valores:
+                valor = int(ele.split(':')[1])
+
+                if letra in cantidad_letra:
+                    cantidad_letra[letra] += valor
+                else:
+                    cantidad_letra[letra] = valor
+
+    sorted_items = sorted(cantidad_letra.items(), key=lambda x: x[0])
+    result = dict(sorted_items)
+
+    return result
