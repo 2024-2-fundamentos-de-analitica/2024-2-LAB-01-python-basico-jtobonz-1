@@ -26,3 +26,26 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+
+    max_min = {}
+
+    with open('files/input/data.csv', 'r') as file:
+        for line in file:
+            for pair in line.split('\t')[4].split(','):
+                key = pair.split(':')[0]
+                value = int(pair.split(':')[1])
+
+                if key in max_min:
+                    if value > max_min[key][0]:
+                        max_min[key] = (value, max_min[key][1])
+                    if value < max_min[key][1]:
+                        max_min[key] = (max_min[key][0], value)
+                else:
+                    max_min[key] = (value, value)
+
+    registro = [(key, maximo, minimo) for key, (maximo, minimo) in max_min.items()]
+    registro.sort()
+
+    return registro
+
+print(pregunta_06())
