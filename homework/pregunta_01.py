@@ -17,7 +17,7 @@ def pregunta_01():
 
     sum = 0
 
-    with open('../files/input/data.csv', 'r') as file:
+    with open('data.csv', 'r') as file:
         for line in file:
             value = int(line.split('\t')[1])
             sum += value

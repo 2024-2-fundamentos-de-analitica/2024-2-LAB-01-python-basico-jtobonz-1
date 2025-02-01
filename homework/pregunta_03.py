@@ -18,7 +18,7 @@ def pregunta_03():
 
     cantidad_letra = {}
 
-    with open('../files/input/data.csv', 'r') as file:
+    with open('data.csv', 'r') as file:
         for line in file:
             letra = line.split('\t')[0]
             valor = int(line.split('\t')[1])
