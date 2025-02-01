@@ -15,3 +15,19 @@ def pregunta_02():
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
 
     """
+
+    cantidad_letra = {}
+
+    with open('../files/input/data.csv', 'r') as file:
+        for line in file:
+            letra = line.split('\t')[0]
+
+            if letra in cantidad_letra:
+                cantidad_letra[letra] += 1
+            else:
+                cantidad_letra[letra] = 1
+
+    registro = [(letra, cantidad) for letra, cantidad in cantidad_letra.items()]
+    registro.sort()
+
+    return registro
